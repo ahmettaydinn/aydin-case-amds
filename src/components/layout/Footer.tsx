@@ -21,7 +21,11 @@ const StyledFab = styled(Fab)({
 const Footer = () => {
   return (
     <>
-      <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
+      <AppBar
+        position="absolute"
+        color="primary"
+        sx={{ top: "auto", bottom: 0 }}
+      >
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">
             <MenuIcon />
