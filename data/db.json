@@ -216,6 +216,8 @@
           "links_count": 719,
           "id": "1701"
         },
+
+
         {
           "name": "Hong Kong Intl",
           "city": "Hong Kong",
@@ -2964,6 +2966,7 @@
           "links_count": 133,
           "id": "2177"
         },
+
         {
           "name": "Adnan Menderes",
           "city": "Izmir",
@@ -39387,74 +39390,117 @@
       ],
     "tickets": [
       {
-        "id": "fc704c16fd79",
-        "company": "US Airlines",
-        "points": 25000,
-        "duration": 590,
-        "segment": [
-          {
-            "duration": 590,
-            "departureTime": "2016-10-10T21:30-03:00",
-            "arrivalTime": "2016-10-11T06:20-04:00",
-            "origin": "GRU",
-            "destination": "JFK"
-          }
-        ]
-      },
+        "departure_city":"Istanbul",
+        "arrival_city":"Izmir",
+        "departure_airport":"IST",
+        "arrival_airport":"ADB",
+        "departure_time":"2023-12-26",
+        "return_time":"2023-12-30",
+        "flight_length":70,
+        "price":200,
+        "arrival_image":"https://media.istockphoto.com/id/485947800/tr/foto%C4%9Fraf/clock-tower-izmir.jpg?s=612x612&w=0&k=20&c=CqaqzJpDMSkoNrghyCuXYKvtPSiTMPuMVFXGXhFP4oI="
+    },
       {
-        "id": "3fe21e46fd78",
-        "company": "Dalta",
-        "points": 20000,
-        "duration": 862,
-        "segment": [
-          {
-            "duration": 635,
-            "departureTime": "2016-10-16T20:25-03:00",
-            "arrivalTime": "2016-10-17T06:00-04:00",
-            "origin": "GRU",
-            "destination": "YYZ",
-            "connectionDuration": 125
-          },
-          {
-            "duration": 102,
-            "departureTime": "2016-10-17T08:05-04:00",
-            "arrivalTime": "2016-10-17T09:47-04:00",
-            "origin": "YYZ",
-            "destination": "JFK"
-          }
-        ]
-      },
+        "departure_city":"Izmir",
+        "arrival_city":"Istanbul",
+        "departure_airport":"ADB",
+        "arrival_airport":"IST",
+        "departure_time":"2024-01-2",
+        "return_time":"2024-01-15",
+        "flight_length":20,
+        "price":150,
+        "arrival_image":"https://st.depositphotos.com/1915353/4509/i/450/depositphotos_45095187-stock-photo-blue-mosque-in-istanbul-sunset.jpg"
+    },
+    
       {
-        "id": "8bf2b3d7be09",
-        "company": "Aviana",
-        "points": 17000,
-        "duration": 1050,
-        "segment": [
-          {
-            "duration": 515,
-            "departureTime": "2016-10-10T21:25-03:00",
-            "arrivalTime": "2016-10-11T05:00-04:00",
-            "origin": "GRU",
-            "destination": "MIA",
-            "connectionDuration": 145
-          },
-          {
-            "duration": 192,
-            "departureTime": "2016-10-11T07:25-04:00",
-            "arrivalTime": "2016-10-11T10:37-04:00",
-            "origin": "MIA",
-            "destination": "YYZ",
-            "connectionDuration": 98
-          },
-          {
-            "duration": 100,
-            "departureTime": "2016-10-11T12:15-04:00",
-            "arrivalTime": "2016-10-11T13:55-04:00",
-            "origin": "YYZ",
-            "destination": "JFK"
-          }
-        ]
-      }
+        "departure_city":"Ankara",
+        "arrival_city":"Adana",
+        "departure_airport":"ESB",
+        "arrival_airport":"ADA",
+        "departure_time":"2024-02-2",
+        "return_time":"2024-02-15",
+        "flight_length":30,
+        "price":100,
+        "arrival_image":"https://media.istockphoto.com/id/1163813872/tr/foto%C4%9Fraf/atat%C3%BCrk-mozolesi-an%C4%B1tkabir.jpg?s=612x612&w=0&k=20&c=-4ykrzxh0C1ftwmTmDygOQ3LmueTpnRTNY304JvSG7M="
+    },
+      {
+        "departure_city":"London",
+        "arrival_city":"New York",
+        "departure_airport":"LHR",
+        "arrival_airport":"JFK",
+        "departure_time":"2024-03-2",
+        "return_time":"2024-03-15",
+        "flight_length":40,
+        "price":350,
+        "arrival_image":"https://media.istockphoto.com/id/1406960186/tr/foto%C4%9Fraf/the-skyline-of-new-york-city-united-states.jpg?s=612x612&w=0&k=20&c=KwllRoUrYYHjmgy9YqMhOnAUJOrZXY2iYFZ8E3MnfhA="
+    },
+      {
+        "departure_city":"Amsterdam",
+        "arrival_city":"Toronto",
+        "departure_airport":"AMS",
+        "arrival_airport":"YYZ",
+        "departure_time":"2024-09-9",
+        "return_time":"2024-09-12",
+        "flight_length":50,
+        "price":300,
+        "arrival_image":"https://media.istockphoto.com/id/535849289/tr/foto%C4%9Fraf/toronto-skyline-at-twilight.jpg?s=612x612&w=0&k=20&c=NWg8afAJYpwneak2ZHJzQZvNijNz2aq5omI7jxylBtc="
+    },
+      {
+        "departure_city":"Chicago",
+        "arrival_city":"Beijing",
+        "departure_airport":"MDW",
+        "arrival_airport":"PEK",
+        "departure_time":"2024-04-2",
+        "return_time":"2024-04-15",
+        "flight_length":60,
+        "price":250,
+        "arrival_image":"https://media.istockphoto.com/id/482334184/tr/foto%C4%9Fraf/night-on-beijing-central-business-district-buildings-skyline-china-cityscape.jpg?s=612x612&w=0&k=20&c=QpX8ytuXrH0r67q3qJOqNZlnIEsu3KYjAe5OAYEHXiQ="
+    },
+      {
+        "departure_city":"Delhi",
+        "arrival_city":"Rio Grande",
+        "departure_airport":"DEL",
+        "arrival_airport":"RIG",
+        "departure_time":"2024-06-7",
+        "return_time":"2024-06-28",
+        "flight_length":10,
+        "price":400,
+        "arrival_image":"https://www.altinrota.org/assets/images/uploads/articles/global/2022-05-19-113104-resim1.png"
+    },
+      {
+        "departure_city":"Stockholm",
+        "arrival_city":"Khabarovsk",
+        "departure_airport":"NYO",
+        "arrival_airport":"KHV",
+        "departure_time":"2024-08-1",
+        "return_time":"2024-08-25",
+        "flight_length":80,
+        "price":900,
+        "arrival_image":"https://media.istockphoto.com/id/1440011471/tr/foto%C4%9Fraf/ancient-dormition-cathedral-of-khabarovsk-against-the-blue-sky-in-russia.jpg?s=612x612&w=0&k=20&c=roWAjtAvSud5TZC5SvqKybm7Fk4NqAmUXv-DX8Oxrtk="
+    },
+      {
+        "departure_city":"Lille",
+        "arrival_city":"San Jose Del Cabo",
+        "departure_airport":"LIL",
+        "arrival_airport":"SJD",
+        "departure_time":"2024-07-29",
+        "return_time":"2024-10-3",
+        "flight_length":90,
+        "price":500,
+        "arrival_image":"https://media.istockphoto.com/id/1205168152/tr/foto%C4%9Fraf/san-jose-del-cabo.jpg?s=612x612&w=0&k=20&c=21Hom0GPDBhDBry-ZicrxXm9fLMfMu25ODj-APDOC5U="
+    },
+      {
+        "departure_city":"Kos",
+        "arrival_city":"Cebu",
+        "departure_airport":"",
+        "arrival_airport":"",
+        "departure_time":"2024-11-29",
+        "return_time":"2024-12-29",
+        "flight_length":100,
+        "price":450,
+        "arrival_image":"https://media.istockphoto.com/id/662122836/tr/foto%C4%9Fraf/ada.jpg?s=612x612&w=0&k=20&c=ltYoEdRLMafRcpxv2iYuo78nAmIkrEScDo6vXvsCw5s="
+    }
+      
     ]
   }
 

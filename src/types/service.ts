@@ -11,7 +11,7 @@ export interface airportInfo {
   id: string;
 }
 
-export const emptyData: airportInfo = {
+export const emptyAirportData: airportInfo = {
   name: "",
   city: "",
   country: "",
@@ -22,4 +22,28 @@ export const emptyData: airportInfo = {
   },
   links_count: 0,
   id: "",
+};
+
+export interface ticketInfo {
+  departure_city: string;
+  arrival_city: string;
+  departure_airport: string;
+  arrival_airport: string;
+  departure_time: string;
+  return_time: string;
+  flight_length: number;
+  price: number;
+  arrival_image: string;
+}
+
+export const emptyTicketData: ticketInfo = {
+  departure_city: "",
+  arrival_city: "",
+  departure_airport: "",
+  arrival_airport: "",
+  departure_time: "",
+  return_time: "",
+  flight_length: 0,
+  price: 0,
+  arrival_image: "",
 };

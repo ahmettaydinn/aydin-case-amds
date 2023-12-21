@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { FlightForm } from "./form/FlightForm";
 import useGetAirports from "../service/airports";
+import FlightCard from "./FlightCard";
 
 const MainComponent = () => {
   const { data: airportsList } = useGetAirports();
@@ -11,6 +12,7 @@ const MainComponent = () => {
       height={"100%"}
       sx={{ border: "2px solid red" }}
       display={"flex"}
+      flexDirection={"column"}
     >
       <FlightForm
         onSubmitReady={(data) => {
@@ -18,6 +20,7 @@ const MainComponent = () => {
         }}
         options={airportsList ?? []}
       />
+      <FlightCard />
     </Box>
   );
 };
