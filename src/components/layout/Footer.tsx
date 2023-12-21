@@ -24,7 +24,7 @@ const Footer = () => {
       <AppBar
         position="absolute"
         color="primary"
-        sx={{ top: "auto", bottom: 0 }}
+        sx={{ top: "auto", bottom: 0, height: "8vh" }}
       >
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">

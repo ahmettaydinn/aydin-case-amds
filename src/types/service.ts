@@ -10,3 +10,16 @@ export interface airportInfo {
   links_count: number;
   id: string;
 }
+
+export const emptyData: airportInfo = {
+  name: "",
+  city: "",
+  country: "",
+  iata_code: "",
+  _geoloc: {
+    lat: 0,
+    lng: 0,
+  },
+  links_count: 0,
+  id: "",
+};

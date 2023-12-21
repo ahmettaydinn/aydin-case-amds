@@ -1,33 +1,24 @@
-import { Container } from "@mui/material";
-import FlightForm from "./form/flightForm";
-import { useState } from "react";
+import { Box } from "@mui/material";
+import { FlightForm } from "./form/FlightForm";
+import useGetAirports from "../service/airports";
 
 const MainComponent = () => {
-  const [departure, setDeparture] = useState("");
-  const [arrival, setArrival] = useState("");
-  const [departureDate, setDepartureDate] = useState(new Date());
-  const [returnDate, setReturnDate] = useState(new Date());
+  const { data: airportsList } = useGetAirports();
   return (
-    <Container
-      sx={{
-        border: "2px solid red",
-        height: "83%",
-        justifyContent: "center",
-        alignItems: "center",
-        display: "flex",
-      }}
+    <Box
+      justifyContent={"center"}
+      alignItems={"center"}
+      height={"100%"}
+      sx={{ border: "2px solid red" }}
+      display={"flex"}
     >
       <FlightForm
-        departure={departure}
-        setDeparture={setDeparture}
-        arrival={arrival}
-        setArrival={setArrival}
-        departureDate={departureDate}
-        setDepartureDate={setDepartureDate}
-        returnDate={returnDate}
-        setReturnDate={setReturnDate}
+        onSubmitReady={(data) => {
+          console.log("onSubmitReady", data);
+        }}
+        options={airportsList ?? []}
       />
-    </Container>
+    </Box>
   );
 };
 
