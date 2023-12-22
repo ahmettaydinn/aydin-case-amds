@@ -1,5 +1,5 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { Control, Controller, UseFormResetField } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -47,7 +47,7 @@ const RHFDatePicker = (props: IRHFDatePickerProps) => {
           <DatePicker
             sx={{ width: 190, ...extraStyle }}
             label={label}
-            value={value ?? dayjs()}
+            value={value}
             inputRef={ref}
             onChange={(date) => {
               const isValid = validate(date, name);

@@ -6,11 +6,7 @@ import RHFDatePicker from "./RHFDatePicker";
 import RHFCheckbox from "./RHFCheckbox";
 import dayjs, { Dayjs } from "dayjs";
 import SearchIcon from "@mui/icons-material/Search";
-
-type FlightFormValues = {
-  departureAirPort: string;
-  arrivalAirport: string;
-};
+import { FlightFormValues } from "../../types/form";
 
 interface IFlightFormProps {
   onSubmitReady: (data: FlightFormValues) => void;
@@ -19,20 +15,21 @@ interface IFlightFormProps {
 }
 
 export function FlightForm(props: IFlightFormProps) {
-  const { handleSubmit, control, watch, setValue, resetField } = useForm<{
-    departureAirPort: string;
-    arrivalAirport: string;
-    departureDate: Date | Dayjs;
-    returnDate: Date | Dayjs;
-    isOneWay: boolean;
-    isRoundWay: boolean;
-  }>({
-    defaultValues: {
-      isRoundWay: true,
-      departureDate: dayjs(),
-      returnDate: dayjs(),
-    },
-  });
+  const { handleSubmit, control, watch, setValue, resetField, formState } =
+    useForm<{
+      departureAirPort: string;
+      arrivalAirport: string;
+      departureDate: Date | Dayjs;
+      returnDate: Date | Dayjs;
+      isOneWay: boolean;
+      isRoundWay: boolean;
+    }>({
+      defaultValues: {
+        isRoundWay: true,
+        departureDate: dayjs(),
+        returnDate: dayjs(),
+      },
+    });
 
   const validateAutoComplete = (newValue: string | undefined, name: string) => {
     if (name === "arrivalAirport" && newValue === watch("departureAirPort")) {
@@ -68,8 +65,21 @@ export function FlightForm(props: IFlightFormProps) {
 
   return (
     <form
-      onSubmit={handleSubmit(props.onSubmitReady)}
-      style={{ marginTop: 100, marginBottom: 80 }}
+      onSubmit={handleSubmit((data) => {
+        props.onSubmitReady(data);
+        if (Object.values(formState.errors).length === 0) {
+          props.handleScroll();
+        }
+      })}
+      style={{
+        marginTop: 100,
+        marginBottom: 80,
+        border: "2px solid black",
+        padding: 25,
+        paddingTop: 40,
+        paddingBottom: 40,
+        borderRadius: 10,
+      }}
     >
       <Box>
         <RHFAutoComplete
@@ -135,9 +145,9 @@ export function FlightForm(props: IFlightFormProps) {
         <Button
           type="submit"
           variant="contained"
-          onClick={() => {
-            props.handleScroll();
-          }}
+          // onClick={() => {
+
+          // }}
           endIcon={<SearchIcon />}
         >
           Search

@@ -1,10 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import TicketCard from "./TicketCard";
 import { ticketInfo } from "../types/service";
 
 interface ITicketsListProps {
   scrollRef: React.MutableRefObject<HTMLElement | null>;
   ticketsList: ticketInfo[] | undefined;
+  isFiltered: boolean;
+  setSearchedTickets: React.Dispatch<
+    React.SetStateAction<ticketInfo[] | undefined | null>
+  >;
 }
 
 const TicketsList = (props: ITicketsListProps) => {
@@ -25,19 +29,32 @@ const TicketsList = (props: ITicketsListProps) => {
           padding: 5,
         }}
       >
-        <Typography variant="h3" ref={props.scrollRef}>
-          Tickets
+        <Typography variant="h3" ref={props.scrollRef} textAlign={"center"}>
+          {props?.isFiltered ? "Searched Tickets" : "All Tickets"}
         </Typography>
 
-        {props.ticketsList && props.ticketsList?.length < 0 ? (
-          <Typography
-            textAlign={"center"}
-            variant="h5"
-            color={"#FF0060"}
-            mt={10}
-          >
-            No ticket matches your request
-          </Typography>
+        {props.ticketsList && props.ticketsList?.length === 0 ? (
+          <>
+            <Typography
+              textAlign={"center"}
+              variant="h5"
+              color={"error"}
+              mt={10}
+            >
+              No ticket matches your request. Check other tickets that may suit
+              your plan.
+            </Typography>
+            <Button
+              color="error"
+              sx={{ ml: "34%", mt: 3 }}
+              variant="outlined"
+              onClick={() => {
+                props.setSearchedTickets(null);
+              }}
+            >
+              All Tickets
+            </Button>
+          </>
         ) : (
           props.ticketsList?.map((ticket) => {
             return <TicketCard ticket={ticket} key={ticket.id} />;

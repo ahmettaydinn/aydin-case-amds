@@ -14,8 +14,9 @@ import MenuItem from "@mui/material/MenuItem";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import { useState } from "react";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [""];
+// const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Tickets", "Extra Packages", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -49,7 +50,6 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -107,7 +107,6 @@ const Navbar = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -136,7 +135,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Ahmet" src="/holiday.png" sx={{ width: 40 }} />
               </IconButton>
             </Tooltip>
             <Menu

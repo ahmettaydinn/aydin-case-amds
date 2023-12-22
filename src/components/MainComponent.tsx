@@ -1,19 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FlightForm } from "./form/FlightForm";
 import useGetAirports from "../service/airports";
-
 import TicketsList from "./TicketsList";
 import { useRef, useState } from "react";
 import useGetTicket from "../service/ticket";
-
-interface ISubmitData {
-  isRoundWay: string;
-  departureAirPort: string;
-  arrivalAirport: string;
-  departureDate: string;
-  returnDate: string;
-  isOneWay: true;
-}
+import Image from "/public/bgg.jpg";
+import { ticketInfo } from "../types/service";
+import { FlightFormValues } from "../types/form";
 
 const MainComponent = () => {
   const { data: airportsList } = useGetAirports();
@@ -24,28 +17,28 @@ const MainComponent = () => {
     ticketsScrollRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const [searchedTickets, setSearchedTickets] = useState(null);
+  const [searchedTickets, setSearchedTickets] = useState<
+    ticketInfo[] | undefined | null
+  >(null);
 
-  const searchTickets = (data: ISubmitData) => {
+  const searchTickets = (data: FlightFormValues) => {
     const departureTickets = ticketsList?.filter((ticket) => {
-      console.log("data.returnDate", new Date(data.returnDate).getTime());
-      console.log("data.departureDate", new Date(data.departureDate).getTime());
+      // console.log("data.returnDate", new Date(data.returnDate).getTime());
+      // console.log("data.departureDate", new Date(data.departureDate).getTime());
       const departureCondition =
         ticket.departure_airport === data.arrivalAirport &&
         ticket.arrival_airport === data.departureAirPort &&
-        new Date(data.departureDate).getTime() <=
+        new Date(data.departureDate as Date).getTime() <=
           new Date(ticket.departure_time).getTime();
 
       return departureCondition;
     });
 
     const returnTickets = ticketsList?.filter((ticket) => {
-      console.log("data.returnDate", new Date(data.returnDate).getTime());
-      console.log("data.departureDate", new Date(data.departureDate).getTime());
       const returnCondition =
         ticket.departure_airport === data.departureAirPort &&
         ticket.arrival_airport === data.arrivalAirport &&
-        new Date(data.returnDate).getTime() <=
+        new Date(data.returnDate as Date).getTime() <=
           new Date(ticket.departure_time).getTime();
 
       return returnCondition;
@@ -55,9 +48,13 @@ const MainComponent = () => {
       ticket.return = true;
     });
 
-    console.log("departureTickets", departureTickets);
-
-    setSearchedTickets(departureTickets?.concat(returnTickets));
+    if (data.isOneWay) {
+      setSearchedTickets(departureTickets);
+    } else {
+      setSearchedTickets(
+        departureTickets?.concat(returnTickets as ticketInfo[])
+      );
+    }
   };
   console.log("searchedTickets", searchedTickets);
   return (
@@ -68,9 +65,17 @@ const MainComponent = () => {
       display={"flex"}
       flexDirection={"column"}
     >
+      <Box
+        sx={{ backgroundImage: `url(${Image})` }}
+        mt={3}
+        p={5}
+        borderRadius={2}
+      >
+        <Typography variant="h1">Get Your Dream Holiday</Typography>
+      </Box>
+
       <FlightForm
         onSubmitReady={(data) => {
-          console.log("onSubmitReady", data);
           searchTickets(data);
         }}
         options={airportsList ?? []}
@@ -79,6 +84,8 @@ const MainComponent = () => {
       <TicketsList
         scrollRef={ticketsScrollRef}
         ticketsList={searchedTickets ? searchedTickets : ticketsList}
+        isFiltered={!!searchedTickets}
+        setSearchedTickets={setSearchedTickets}
       />
     </Box>
   );
