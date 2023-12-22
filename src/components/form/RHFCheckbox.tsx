@@ -1,13 +1,14 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
+import { Dayjs } from "dayjs";
 
 import { Control, Controller } from "react-hook-form";
 
-interface RHFCheckboxProps {
+interface IRHFCheckboxProps {
   control: Control<{
     departureAirPort: string;
     arrivalAirport: string;
-    departureDate: Date;
-    returnDate: Date;
+    departureDate: Date | Dayjs;
+    returnDate: Date | Dayjs;
     isOneWay: boolean;
     isRoundWay: boolean;
   }>;
@@ -23,7 +24,7 @@ interface RHFCheckboxProps {
   toggleways: () => void;
 }
 
-const RHFCheckbox = (props: RHFCheckboxProps) => {
+const RHFCheckbox = (props: IRHFCheckboxProps) => {
   const { name, control, label, toggleways } = props;
 
   return (

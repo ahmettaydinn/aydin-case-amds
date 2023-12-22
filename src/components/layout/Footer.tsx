@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Fab from "@mui/material/Fab";
 import MenuIcon from "@mui/icons-material/Menu";
-import AddIcon from "@mui/icons-material/Add";
+import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
@@ -21,17 +21,13 @@ const StyledFab = styled(Fab)({
 const Footer = () => {
   return (
     <>
-      <AppBar
-        position="absolute"
-        color="primary"
-        sx={{ top: "auto", bottom: 0, height: "8vh" }}
-      >
-        <Toolbar>
+      <AppBar position="absolute" color="primary" sx={{ top: "auto" }}>
+        <Toolbar disableGutters>
           <IconButton color="inherit" aria-label="open drawer">
             <MenuIcon />
           </IconButton>
           <StyledFab color="secondary" aria-label="add">
-            <AddIcon />
+            <BeachAccessIcon />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton color="inherit">

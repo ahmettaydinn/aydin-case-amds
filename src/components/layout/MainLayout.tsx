@@ -8,7 +8,8 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     <Box>
       <CssBaseline />
       <Navbar />
-      <Box sx={{ height: "84vh" }}>{children}</Box>
+      <Box>{children}</Box>
+      {/* sx={{ height: "84vh", overflow: "auto" }} */}
       <Footer />
     </Box>
   );
