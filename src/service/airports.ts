@@ -4,7 +4,7 @@ import { airportInfo, emptyAirportData } from "../types/service";
 
 const getAirports = async () => {
   const data = await axios.get<airportInfo[] | undefined>(
-    "http://localhost:3000/airports?_page=1"
+    "http://localhost:3000/airports"
   );
 
   return data.data;

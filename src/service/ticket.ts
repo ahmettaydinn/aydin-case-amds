@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { emptyTicketData, ticketInfo } from "../types/service";
 
-const getAirports = async () => {
+const getTicket = async () => {
   const data = await axios.get<ticketInfo[] | undefined>(
     "http://localhost:3000/tickets"
   );
@@ -10,10 +10,10 @@ const getAirports = async () => {
   return data.data;
 };
 
-export default function useGetAirports() {
+export default function useGetTicket() {
   return useQuery({
-    queryKey: "airports",
-    queryFn: getAirports,
+    queryKey: "tickets",
+    queryFn: getTicket,
     initialData: [emptyTicketData],
   });
 }

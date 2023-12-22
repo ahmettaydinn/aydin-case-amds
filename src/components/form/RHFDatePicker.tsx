@@ -1,14 +1,14 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { Control, Controller, UseFormResetField } from "react-hook-form";
 import { toast } from "react-toastify";
 
-interface RHFDatePickerProps {
+interface IRHFDatePickerProps {
   control: Control<{
     departureAirPort: string;
     arrivalAirport: string;
-    departureDate: Date;
-    returnDate: Date;
+    departureDate: Date | Dayjs;
+    returnDate: Date | Dayjs;
     isOneWay: boolean;
     isRoundWay: boolean;
   }>;
@@ -21,24 +21,27 @@ interface RHFDatePickerProps {
     | "isRoundWay";
   extraStyle: object;
   label: string;
-  validate: (newValue: string | boolean | Date | null, name: string) => string;
+  validate: (
+    newValue: string | boolean | Date | null | Dayjs,
+    name: string
+  ) => string;
   resetField: UseFormResetField<{
     departureAirPort: string;
     arrivalAirport: string;
-    departureDate: Date;
-    returnDate: Date;
+    departureDate: Date | Dayjs;
+    returnDate: Date | Dayjs;
     isOneWay: boolean;
     isRoundWay: boolean;
   }>;
 }
 
-const RHFDatePicker = (props: RHFDatePickerProps) => {
+const RHFDatePicker = (props: IRHFDatePickerProps) => {
   const { control, name, extraStyle, label, validate, resetField } = props;
   return (
     <Controller
       control={control}
       name={name}
-      rules={{ required: true }}
+      rules={{ required: name === "departureDate" ? true : false }}
       render={({ field: { onChange, value, ref } }) => {
         return (
           <DatePicker

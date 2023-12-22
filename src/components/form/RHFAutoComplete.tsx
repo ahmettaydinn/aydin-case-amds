@@ -2,7 +2,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { toast } from "react-toastify";
 
-interface RHFAutoCompleteProps<
+interface IRHFAutoCompleteProps<
   O extends { id: string; name: string; iata_code?: string; city?: string },
   TField extends FieldValues
 > {
@@ -17,13 +17,14 @@ const RHFAutoComplete = <
   O extends { id: string; name: string; iata_code?: string; city?: string },
   TField extends FieldValues
 >(
-  props: RHFAutoCompleteProps<O, TField>
+  props: IRHFAutoCompleteProps<O, TField>
 ) => {
   const { control, name, options, label, validate } = props;
   return (
     <Controller
       name={name}
       control={control}
+      rules={{ required: true }}
       render={({ field, fieldState: { error } }) => {
         const { onChange, value, ref } = field;
         return (
