@@ -1,10 +1,10 @@
-import MainComponent from "./components/MainComponent";
+import FlightBookingPage from "./pages/FlightBookingPage";
 import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
     <MainLayout>
-      <MainComponent />
+      <FlightBookingPage />
     </MainLayout>
   );
 }

@@ -8,6 +8,7 @@ import {
   Chip,
   Typography,
 } from "@mui/material";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import { ticketInfo } from "../types/service";
 
 interface ITicketCardProps {
@@ -28,6 +29,7 @@ const TicketCard = (props: ITicketCardProps) => {
         <Typography gutterBottom variant="h5" component="div">
           {`${ticket.departure_city} (${ticket.departure_airport}) - ${ticket.arrival_city} (${ticket.arrival_airport})`}
         </Typography>
+        <Typography textAlign={"left"}>{ticket.departure_time}</Typography>
         <Typography variant="body2" color="text.secondary">
           Embark on your dream journey to{" "}
           <span style={{ fontWeight: "bold" }}> {ticket.arrival_city}</span> !
@@ -48,11 +50,17 @@ const TicketCard = (props: ITicketCardProps) => {
           <Button size="small">Buy</Button>
 
           <Chip
-            label={ticket.return ? "departure ticket" : "return ticket"}
+            label={ticket.return ? "return ticket" : "departure ticket"}
             color="primary"
             variant="outlined"
           />
         </CardActions>
+
+        <Box>
+          <Typography textAlign={"center"}>{ticket.flight_length}m</Typography>
+          <HourglassEmptyIcon fontSize="small" sx={{ ml: 0.5 }} />
+        </Box>
+
         <Typography variant="h5" textAlign={"right"}>
           {ticket.price}$
         </Typography>

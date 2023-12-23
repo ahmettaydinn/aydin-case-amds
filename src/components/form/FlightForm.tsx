@@ -6,11 +6,7 @@ import RHFDatePicker from "./RHFDatePicker";
 import RHFCheckbox from "./RHFCheckbox";
 import dayjs, { Dayjs } from "dayjs";
 import SearchIcon from "@mui/icons-material/Search";
-
-type FlightFormValues = {
-  departureAirPort: string;
-  arrivalAirport: string;
-};
+import { FlightFormValues } from "../../types/form";
 
 interface IFlightFormProps {
   onSubmitReady: (data: FlightFormValues) => void;
@@ -19,57 +15,37 @@ interface IFlightFormProps {
 }
 
 export function FlightForm(props: IFlightFormProps) {
-  const { handleSubmit, control, watch, setValue, resetField } = useForm<{
-    departureAirPort: string;
-    arrivalAirport: string;
-    departureDate: Date | Dayjs;
-    returnDate: Date | Dayjs;
-    isOneWay: boolean;
-    isRoundWay: boolean;
-  }>({
-    defaultValues: {
-      isRoundWay: true,
-      departureDate: dayjs(),
-      returnDate: dayjs(),
-    },
-  });
-
-  const validateAutoComplete = (newValue: string | undefined, name: string) => {
-    if (name === "arrivalAirport" && newValue === watch("departureAirPort")) {
-      return "invalid";
-    } else if (
-      name === "departureAirport" &&
-      newValue === watch("arrivalAirport")
-    ) {
-      return "invalid";
-    } else {
-      return "valid";
-    }
-  };
-
-  const validateDatePicker = (
-    newValue: string | boolean | Date | null | Dayjs,
-    name: string
-  ) => {
-    if (new Date(newValue as Date) < new Date()) {
-      return "invalid";
-    }
-    newValue = newValue ?? "";
-
-    if (
-      name === "returnDate" &&
-      new Date(watch("departureDate") as Date) > new Date(newValue as Date)
-    ) {
-      return "invalid";
-    } else {
-      return "valid";
-    }
-  };
+  const { handleSubmit, control, watch, setValue, resetField, formState } =
+    useForm<{
+      departureAirPort: string;
+      arrivalAirport: string;
+      departureDate: Date | Dayjs;
+      returnDate: Date | Dayjs;
+      isOneWay: boolean;
+      isRoundWay: boolean;
+    }>({
+      defaultValues: {
+        isRoundWay: true,
+        departureDate: dayjs(),
+        returnDate: dayjs(),
+      },
+    });
 
   return (
     <form
-      onSubmit={handleSubmit(props.onSubmitReady)}
-      style={{ marginTop: 100, marginBottom: 80 }}
+      onSubmit={handleSubmit((data) => {
+        props.onSubmitReady(data);
+        if (Object.values(formState.errors).length === 0) {
+          props.handleScroll();
+        }
+      })}
+      style={{
+        marginTop: 100,
+        marginBottom: 80,
+        border: "2px solid black",
+        padding: "40px 50px 10px 40px",
+        borderRadius: 10,
+      }}
     >
       <Box>
         <RHFAutoComplete
@@ -77,22 +53,22 @@ export function FlightForm(props: IFlightFormProps) {
           control={control}
           options={props.options ?? []}
           label="Departure"
-          validate={validateAutoComplete}
+          watch={watch}
         />
         <RHFAutoComplete
           name="arrivalAirport"
           control={control}
           options={props.options ?? []}
           label="Arrival"
-          validate={validateAutoComplete}
+          watch={watch}
         />
         <RHFDatePicker
           name="departureDate"
           control={control}
           extraStyle={{ marginRight: "10px" }}
           label="Departure Date"
-          validate={validateDatePicker}
           resetField={resetField}
+          watch={watch}
         />
         {watch("isRoundWay") === true && (
           <RHFDatePicker
@@ -100,8 +76,8 @@ export function FlightForm(props: IFlightFormProps) {
             control={control}
             extraStyle={{ marginLeft: "10px" }}
             label="Arrival Date"
-            validate={validateDatePicker}
             resetField={resetField}
+            watch={watch}
           />
         )}
         <Box>
@@ -131,15 +107,8 @@ export function FlightForm(props: IFlightFormProps) {
           />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-        <Button
-          type="submit"
-          variant="contained"
-          onClick={() => {
-            props.handleScroll();
-          }}
-          endIcon={<SearchIcon />}
-        >
+      <Box mt={2} justifyContent="center" display="flex">
+        <Button type="submit" variant="contained" endIcon={<SearchIcon />}>
           Search
         </Button>
       </Box>

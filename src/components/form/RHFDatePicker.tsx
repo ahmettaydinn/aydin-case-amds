@@ -1,7 +1,13 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
-import { Control, Controller, UseFormResetField } from "react-hook-form";
+import { Dayjs } from "dayjs";
+import {
+  Control,
+  Controller,
+  UseFormResetField,
+  UseFormWatch,
+} from "react-hook-form";
 import { toast } from "react-toastify";
+import { validateDatePicker } from "../../utils/form/validateForm";
 
 interface IRHFDatePickerProps {
   control: Control<{
@@ -21,11 +27,15 @@ interface IRHFDatePickerProps {
     | "isRoundWay";
   extraStyle: object;
   label: string;
-  validate: (
-    newValue: string | boolean | Date | null | Dayjs,
-    name: string
-  ) => string;
   resetField: UseFormResetField<{
+    departureAirPort: string;
+    arrivalAirport: string;
+    departureDate: Date | Dayjs;
+    returnDate: Date | Dayjs;
+    isOneWay: boolean;
+    isRoundWay: boolean;
+  }>;
+  watch: UseFormWatch<{
     departureAirPort: string;
     arrivalAirport: string;
     departureDate: Date | Dayjs;
@@ -36,7 +46,7 @@ interface IRHFDatePickerProps {
 }
 
 const RHFDatePicker = (props: IRHFDatePickerProps) => {
-  const { control, name, extraStyle, label, validate, resetField } = props;
+  const { control, name, extraStyle, label, resetField, watch } = props;
   return (
     <Controller
       control={control}
@@ -47,10 +57,10 @@ const RHFDatePicker = (props: IRHFDatePickerProps) => {
           <DatePicker
             sx={{ width: 190, ...extraStyle }}
             label={label}
-            value={value ?? dayjs()}
+            value={value}
             inputRef={ref}
             onChange={(date) => {
-              const isValid = validate(date, name);
+              const isValid = validateDatePicker(date, name, watch);
               if (isValid === "invalid") {
                 resetField("departureDate");
                 resetField("returnDate");
