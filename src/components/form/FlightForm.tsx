@@ -12,6 +12,8 @@ interface IFlightFormProps {
   onSubmitReady: (data: FlightFormValues) => void;
   options: airportInfo[];
   handleScroll: () => void;
+  setSelectedDepartAirport: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedArrivalAirport: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export function FlightForm(props: IFlightFormProps) {
@@ -54,6 +56,8 @@ export function FlightForm(props: IFlightFormProps) {
           options={props.options ?? []}
           label="Departure"
           watch={watch}
+          setSelectedArrivalAirport={props.setSelectedArrivalAirport}
+          setSelectedDepartAirport={props.setSelectedDepartAirport}
         />
         <RHFAutoComplete
           name="arrivalAirport"
@@ -61,6 +65,8 @@ export function FlightForm(props: IFlightFormProps) {
           options={props.options ?? []}
           label="Arrival"
           watch={watch}
+          setSelectedArrivalAirport={props.setSelectedArrivalAirport}
+          setSelectedDepartAirport={props.setSelectedDepartAirport}
         />
         <RHFDatePicker
           name="departureDate"

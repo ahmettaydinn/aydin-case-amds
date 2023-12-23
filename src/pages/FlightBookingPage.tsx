@@ -6,12 +6,22 @@ import { useRef, useState } from "react";
 import useGetTicket from "../service/ticket";
 import Image from "/public/bgg.jpg";
 import { ticketInfo } from "../types/service";
-import { searchTickets } from "../utils/searchTickets";
 import { handleScrollToTickets } from "../utils/scrollToElement";
+import { initialSort } from "../types/ticket";
 
 const FlightBookingPage = () => {
+  const [selectedDepartAirport, setSelectedDepartAirport] = useState("");
+  const [selectedArrivalAirport, setSelectedArrivalAirport] = useState("");
+  const [sortList, setSortList] = useState(initialSort);
+
+  // ! ----------------------------------------------------
+
   const { data: airportsList } = useGetAirports();
-  const { data: ticketsList } = useGetTicket();
+  const { data: ticketsList } = useGetTicket({
+    departAirport: selectedDepartAirport,
+    arrivalAirport: selectedArrivalAirport,
+    sortList: sortList,
+  });
   const ticketsScrollRef = useRef<null | HTMLElement>(null);
   const [searchedTickets, setSearchedTickets] = useState<
     ticketInfo[] | undefined | null
@@ -36,16 +46,22 @@ const FlightBookingPage = () => {
 
       <FlightForm
         onSubmitReady={(data) => {
-          searchTickets(data, ticketsList, setSearchedTickets);
+          // searchTickets(data, ticketsList, setSearchedTickets);
+          setSelectedArrivalAirport(data.arrivalAirport);
+          setSelectedDepartAirport(data.departureAirPort);
         }}
         options={airportsList ?? []}
         handleScroll={() => handleScrollToTickets(ticketsScrollRef)}
+        setSelectedArrivalAirport={setSelectedArrivalAirport}
+        setSelectedDepartAirport={setSelectedDepartAirport}
       />
       <TicketsList
         scrollRef={ticketsScrollRef}
         ticketsList={searchedTickets ? searchedTickets : ticketsList}
         isFiltered={!!searchedTickets}
         setSearchedTickets={setSearchedTickets}
+        sortList={sortList}
+        setSortList={setSortList}
       />
     </Box>
   );

@@ -4,7 +4,7 @@ import { ticketInfo } from "../types/service";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useState } from "react";
-import { initialSort } from "../types/ticket";
+import { IinitialSort } from "../types/ticket";
 import { handleSort } from "../utils/sortTickets";
 
 interface ITicketsListProps {
@@ -14,18 +14,18 @@ interface ITicketsListProps {
   setSearchedTickets: React.Dispatch<
     React.SetStateAction<ticketInfo[] | undefined | null>
   >;
+  sortList: IinitialSort;
+  setSortList: React.Dispatch<React.SetStateAction<IinitialSort>>;
 }
 
 const TicketsList = (props: ITicketsListProps) => {
-  const [sortList, setSortList] = useState(initialSort);
-
   const [sortedTickets, setSortedTickets] = useState<
     ticketInfo[] | undefined | null
   >(null);
 
   const ticketData = sortedTickets ?? props.ticketsList;
 
-  console.log("sortList", sortList);
+  console.log("sortList", props.sortList);
   return (
     <Box
       sx={{
@@ -41,7 +41,7 @@ const TicketsList = (props: ITicketsListProps) => {
           display={"flex"}
           justifyContent={"center"}
           borderBottom={
-            sortList.price !== 0 ? "1px solid gray" : "0px solid gray"
+            props.sortList.price !== 0 ? "1px solid gray" : "0px solid gray"
           }
         >
           <Button
@@ -49,16 +49,15 @@ const TicketsList = (props: ITicketsListProps) => {
               handleSort(
                 "price",
                 setSortedTickets,
-                setSortList,
-                props.ticketsList,
-                sortList
+                props.setSortList,
+                props.sortList
               );
             }}
             color="info"
           >
             Price
           </Button>
-          {sortList.price === 1 ? (
+          {props.sortList.price === 1 ? (
             <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
           ) : (
             <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
@@ -68,7 +67,9 @@ const TicketsList = (props: ITicketsListProps) => {
           display={"flex"}
           justifyContent={"center"}
           borderBottom={
-            sortList.departure_time !== 0 ? "1px solid gray" : "0px solid gray"
+            props.sortList.departure_time !== 0
+              ? "1px solid gray"
+              : "0px solid gray"
           }
         >
           <Button
@@ -76,15 +77,14 @@ const TicketsList = (props: ITicketsListProps) => {
               handleSort(
                 "departure_time",
                 setSortedTickets,
-                setSortList,
-                props.ticketsList,
-                sortList
+                props.setSortList,
+                props.sortList
               );
             }}
           >
             Departure
           </Button>
-          {sortList.departure_time === 1 ? (
+          {props.sortList.departure_time === 1 ? (
             <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
           ) : (
             <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
@@ -94,7 +94,9 @@ const TicketsList = (props: ITicketsListProps) => {
           display={"flex"}
           justifyContent={"center"}
           borderBottom={
-            sortList.return_time !== 0 ? "1px solid gray" : "0px solid gray"
+            props.sortList.return_time !== 0
+              ? "1px solid gray"
+              : "0px solid gray"
           }
         >
           <Button
@@ -102,15 +104,14 @@ const TicketsList = (props: ITicketsListProps) => {
               handleSort(
                 "return_time",
                 setSortedTickets,
-                setSortList,
-                props.ticketsList,
-                sortList
+                props.setSortList,
+                props.sortList
               );
             }}
           >
             Return
           </Button>
-          {sortList.return_time === 1 ? (
+          {props.sortList.return_time === 1 ? (
             <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
           ) : (
             <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
@@ -120,7 +121,9 @@ const TicketsList = (props: ITicketsListProps) => {
           display={"flex"}
           justifyContent={"center"}
           borderBottom={
-            sortList.flight_length !== 0 ? "1px solid gray" : "0px solid gray"
+            props.sortList.flight_length !== 0
+              ? "1px solid gray"
+              : "0px solid gray"
           }
         >
           <Button
@@ -128,15 +131,14 @@ const TicketsList = (props: ITicketsListProps) => {
               handleSort(
                 "flight_length",
                 setSortedTickets,
-                setSortList,
-                props.ticketsList,
-                sortList
+                props.setSortList,
+                props.sortList
               );
             }}
           >
             Duration
           </Button>
-          {sortList.flight_length === 1 ? (
+          {props.sortList.flight_length === 1 ? (
             <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
           ) : (
             <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
