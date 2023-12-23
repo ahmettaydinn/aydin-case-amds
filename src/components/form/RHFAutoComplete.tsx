@@ -1,6 +1,14 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { Dayjs } from "dayjs";
+import {
+  Control,
+  Controller,
+  FieldValues,
+  Path,
+  UseFormWatch,
+} from "react-hook-form";
 import { toast } from "react-toastify";
+import { validateAutoComplete } from "../../utils/form/validateForm";
 
 interface IRHFAutoCompleteProps<
   O extends { id: string; name: string; iata_code?: string; city?: string },
@@ -10,7 +18,14 @@ interface IRHFAutoCompleteProps<
   name: Path<TField>;
   options: O[];
   label: string;
-  validate: (newValue: string | undefined, name: string) => string;
+  watch: UseFormWatch<{
+    departureAirPort: string;
+    arrivalAirport: string;
+    departureDate: Date | Dayjs;
+    returnDate: Date | Dayjs;
+    isOneWay: boolean;
+    isRoundWay: boolean;
+  }>;
 }
 
 const RHFAutoComplete = <
@@ -19,7 +34,7 @@ const RHFAutoComplete = <
 >(
   props: IRHFAutoCompleteProps<O, TField>
 ) => {
-  const { control, name, options, label, validate } = props;
+  const { control, name, options, label, watch } = props;
   return (
     <Controller
       name={name}
@@ -38,18 +53,17 @@ const RHFAutoComplete = <
                   : null
               }
               onChange={(_, newValue) => {
-                const isValid = validate(newValue?.iata_code, name);
+                const isValid = validateAutoComplete(
+                  newValue?.iata_code,
+                  name,
+                  watch
+                );
                 if (isValid === "invalid") {
                   toast("Departure and Arrival Location can not be same");
                   return;
                 }
                 onChange(newValue ? newValue.iata_code : null);
               }}
-              // inputValue={departureInput}
-              // onInputChange={(_, newInputValue) => {
-              //   setDepartureInput(newInputValue);
-              // }}
-
               options={options}
               sx={{ width: 400, marginBottom: 2 }}
               getOptionLabel={(option) => `${option.name} - ${option.city}`}

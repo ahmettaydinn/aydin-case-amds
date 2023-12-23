@@ -36,7 +36,6 @@ const RHFCheckbox = (props: IRHFCheckboxProps) => {
           render={({ field: { onChange, value, ref } }) => {
             return (
               <Checkbox
-                // {...props}
                 ref={ref}
                 checked={!!value}
                 onChange={(e) => {

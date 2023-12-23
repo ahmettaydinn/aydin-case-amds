@@ -31,38 +31,6 @@ export function FlightForm(props: IFlightFormProps) {
       },
     });
 
-  const validateAutoComplete = (newValue: string | undefined, name: string) => {
-    if (name === "arrivalAirport" && newValue === watch("departureAirPort")) {
-      return "invalid";
-    } else if (
-      name === "departureAirport" &&
-      newValue === watch("arrivalAirport")
-    ) {
-      return "invalid";
-    } else {
-      return "valid";
-    }
-  };
-
-  const validateDatePicker = (
-    newValue: string | boolean | Date | null | Dayjs,
-    name: string
-  ) => {
-    if (new Date(newValue as Date) < new Date()) {
-      return "invalid";
-    }
-    newValue = newValue ?? "";
-
-    if (
-      name === "returnDate" &&
-      new Date(watch("departureDate") as Date) > new Date(newValue as Date)
-    ) {
-      return "invalid";
-    } else {
-      return "valid";
-    }
-  };
-
   return (
     <form
       onSubmit={handleSubmit((data) => {
@@ -75,9 +43,7 @@ export function FlightForm(props: IFlightFormProps) {
         marginTop: 100,
         marginBottom: 80,
         border: "2px solid black",
-        padding: 25,
-        paddingTop: 40,
-        paddingBottom: 40,
+        padding: "40px 50px 10px 40px",
         borderRadius: 10,
       }}
     >
@@ -87,22 +53,22 @@ export function FlightForm(props: IFlightFormProps) {
           control={control}
           options={props.options ?? []}
           label="Departure"
-          validate={validateAutoComplete}
+          watch={watch}
         />
         <RHFAutoComplete
           name="arrivalAirport"
           control={control}
           options={props.options ?? []}
           label="Arrival"
-          validate={validateAutoComplete}
+          watch={watch}
         />
         <RHFDatePicker
           name="departureDate"
           control={control}
           extraStyle={{ marginRight: "10px" }}
           label="Departure Date"
-          validate={validateDatePicker}
           resetField={resetField}
+          watch={watch}
         />
         {watch("isRoundWay") === true && (
           <RHFDatePicker
@@ -110,8 +76,8 @@ export function FlightForm(props: IFlightFormProps) {
             control={control}
             extraStyle={{ marginLeft: "10px" }}
             label="Arrival Date"
-            validate={validateDatePicker}
             resetField={resetField}
+            watch={watch}
           />
         )}
         <Box>
@@ -141,15 +107,8 @@ export function FlightForm(props: IFlightFormProps) {
           />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-        <Button
-          type="submit"
-          variant="contained"
-          // onClick={() => {
-
-          // }}
-          endIcon={<SearchIcon />}
-        >
+      <Box mt={2} justifyContent="center" display="flex">
+        <Button type="submit" variant="contained" endIcon={<SearchIcon />}>
           Search
         </Button>
       </Box>

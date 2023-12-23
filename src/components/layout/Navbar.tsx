@@ -15,7 +15,7 @@ import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import { useState } from "react";
 
 const pages = [""];
-// const pages = ["Products", "Pricing", "Blog"];
+
 const settings = ["Profile", "Tickets", "Extra Packages", "Logout"];
 
 const Navbar = () => {
@@ -39,7 +39,6 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      {/* sx={{ height: "8vh" }} */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AirplaneTicketIcon

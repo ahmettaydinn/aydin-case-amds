@@ -9,7 +9,6 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <CssBaseline />
       <Navbar />
       <Box>{children}</Box>
-      {/* sx={{ height: "84vh", overflow: "auto" }} */}
       <Footer />
     </Box>
   );

@@ -57,19 +57,7 @@ const TicketCard = (props: ITicketCardProps) => {
         </CardActions>
 
         <Box>
-          <Typography
-            textAlign={"center"}
-            sx={
-              {
-                // border: "2px solid red",
-                // borderRadius: "100%",
-                // width: 60,
-                // height: 40,
-              }
-            }
-          >
-            {ticket.flight_length}m
-          </Typography>
+          <Typography textAlign={"center"}>{ticket.flight_length}m</Typography>
           <HourglassEmptyIcon fontSize="small" sx={{ ml: 0.5 }} />
         </Box>
 
