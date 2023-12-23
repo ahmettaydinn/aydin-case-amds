@@ -12,6 +12,10 @@ import { initialSort } from "../types/ticket";
 const FlightBookingPage = () => {
   const [selectedDepartAirport, setSelectedDepartAirport] = useState("");
   const [selectedArrivalAirport, setSelectedArrivalAirport] = useState("");
+  const [selectedDepartDate, setSelectedDepartDate] = useState("");
+  const [selectedReturnDate, setSelectedReturnDate] = useState<null | string>(
+    ""
+  );
   const [sortList, setSortList] = useState(initialSort);
 
   // ! ---------------------------------------------------------------------------
@@ -21,6 +25,8 @@ const FlightBookingPage = () => {
     departAirport: selectedDepartAirport,
     arrivalAirport: selectedArrivalAirport,
     sortList: sortList,
+    departDate: selectedDepartDate,
+    returnDate: selectedReturnDate,
   });
   const ticketsScrollRef = useRef<null | HTMLElement>(null);
   const [searchedTickets, setSearchedTickets] = useState<
@@ -31,7 +37,8 @@ const FlightBookingPage = () => {
 
   const isLoading = airportsLoading || ticketsLoading;
 
-  console.log("isLoading", isLoading);
+  console.log("selectedReturnDate", selectedReturnDate);
+
   return (
     <Box
       justifyContent={"center"}
@@ -40,7 +47,6 @@ const FlightBookingPage = () => {
       display={"flex"}
       flexDirection={"column"}
     >
-      {" "}
       <Box
         sx={{ backgroundImage: `url(${Image})` }}
         mt={3}
@@ -53,6 +59,21 @@ const FlightBookingPage = () => {
         onSubmitReady={(data) => {
           setSelectedArrivalAirport(data.arrivalAirport);
           setSelectedDepartAirport(data.departureAirPort);
+          setSelectedDepartDate(
+            `${new Date(data.departureDate as Date).getFullYear()}-${new Date(
+              data.departureDate as Date
+            ).getMonth()}-${new Date(data.departureDate as Date).getDate()}`
+          );
+
+          if (data.isOneWay === true) {
+            setSelectedReturnDate(null);
+          } else {
+            setSelectedReturnDate(
+              `${new Date(data.returnDate as Date).getFullYear()}-${new Date(
+                data.returnDate as Date
+              ).getMonth()}-${new Date(data.returnDate as Date).getDate()}`
+            );
+          }
         }}
         options={airportsList ?? []}
         handleScroll={() => handleScrollToTickets(ticketsScrollRef)}

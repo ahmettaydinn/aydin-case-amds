@@ -31,10 +31,10 @@ const TicketCard = (props: ITicketCardProps) => {
         </Typography>
         <Typography textAlign={"left"}>{ticket.departure_time}</Typography>
         <Typography variant="body2" color="text.secondary">
-          Embark on your dream journey to{" "}
+          Embark on your dream journey to
           <span style={{ fontWeight: "bold" }}> {ticket.arrival_city}</span> !
           Unleash wanderlust with our exclusive flight deals. Explore new
-          horizons from{" "}
+          horizons from
           <span style={{ fontWeight: "bold" }}> {ticket.departure_city}</span>,
           and create memories that last a lifetime. Your ticket to excitement
           awaits book now and let the journey begin!

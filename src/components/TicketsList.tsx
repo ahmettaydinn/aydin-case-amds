@@ -28,7 +28,12 @@ const TicketsList = (props: ITicketsListProps) => {
   const ticketData = sortedTickets ?? props.ticketsList;
 
   const flexCenter = props.isLoading
-    ? { display: "flex", justifyContent: "center", alignItems: "center" }
+    ? {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: 500,
+      }
     : {};
   return (
     <Box
@@ -38,7 +43,7 @@ const TicketsList = (props: ITicketsListProps) => {
         border: "2px solid #232D3F",
         borderRadius: 3,
         width: 500,
-        height: 500,
+
         ...flexCenter,
       }}
     >
