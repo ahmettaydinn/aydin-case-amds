@@ -6,6 +6,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useState } from "react";
 import { IinitialSort } from "../types/ticket";
 import { handleSort } from "../utils/sortTickets";
+import { ClimbingBoxLoader } from "react-spinners";
 
 interface ITicketsListProps {
   scrollRef: React.MutableRefObject<HTMLElement | null>;
@@ -16,6 +17,7 @@ interface ITicketsListProps {
   >;
   sortList: IinitialSort;
   setSortList: React.Dispatch<React.SetStateAction<IinitialSort>>;
+  isLoading: boolean;
 }
 
 const TicketsList = (props: ITicketsListProps) => {
@@ -25,7 +27,9 @@ const TicketsList = (props: ITicketsListProps) => {
 
   const ticketData = sortedTickets ?? props.ticketsList;
 
-  console.log("sortList", props.sortList);
+  const flexCenter = props.isLoading
+    ? { display: "flex", justifyContent: "center", alignItems: "center" }
+    : {};
   return (
     <Box
       sx={{
@@ -34,156 +38,172 @@ const TicketsList = (props: ITicketsListProps) => {
         border: "2px solid #232D3F",
         borderRadius: 3,
         width: 500,
+        height: 500,
+        ...flexCenter,
       }}
     >
-      <Box display={"flex"} justifyContent={"space-between"} p={1}>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          borderBottom={
-            props.sortList.price !== 0 ? "1px solid gray" : "0px solid gray"
-          }
-        >
-          <Button
-            onClick={() => {
-              handleSort(
-                "price",
-                setSortedTickets,
-                props.setSortList,
-                props.sortList
-              );
-            }}
-            color="info"
-          >
-            Price
-          </Button>
-          {props.sortList.price === 1 ? (
-            <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
-          ) : (
-            <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
-          )}
-        </Box>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          borderBottom={
-            props.sortList.departure_time !== 0
-              ? "1px solid gray"
-              : "0px solid gray"
-          }
-        >
-          <Button
-            onClick={() => {
-              handleSort(
-                "departure_time",
-                setSortedTickets,
-                props.setSortList,
-                props.sortList
-              );
-            }}
-          >
-            Departure
-          </Button>
-          {props.sortList.departure_time === 1 ? (
-            <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
-          ) : (
-            <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
-          )}
-        </Box>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          borderBottom={
-            props.sortList.return_time !== 0
-              ? "1px solid gray"
-              : "0px solid gray"
-          }
-        >
-          <Button
-            onClick={() => {
-              handleSort(
-                "return_time",
-                setSortedTickets,
-                props.setSortList,
-                props.sortList
-              );
-            }}
-          >
-            Return
-          </Button>
-          {props.sortList.return_time === 1 ? (
-            <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
-          ) : (
-            <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
-          )}
-        </Box>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          borderBottom={
-            props.sortList.flight_length !== 0
-              ? "1px solid gray"
-              : "0px solid gray"
-          }
-        >
-          <Button
-            onClick={() => {
-              handleSort(
-                "flight_length",
-                setSortedTickets,
-                props.setSortList,
-                props.sortList
-              );
-            }}
-          >
-            Duration
-          </Button>
-          {props.sortList.flight_length === 1 ? (
-            <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
-          ) : (
-            <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
-          )}
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          overflow: "auto",
-          height: 700,
-          padding: 5,
-        }}
-      >
-        <Typography variant="h3" ref={props.scrollRef} textAlign={"center"}>
-          {props?.isFiltered ? "Searched Tickets" : "All Tickets"}
-        </Typography>
-
-        {props.ticketsList && props.ticketsList?.length === 0 ? (
-          <>
-            <Typography
-              textAlign={"center"}
-              variant="h5"
-              color={"error"}
-              mt={10}
+      {props.isLoading ? (
+        <ClimbingBoxLoader
+          color={"black"}
+          loading={props.isLoading}
+          // cssOverride={override}
+          size={80}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          // style={{ textAlign: "center" }}
+        />
+      ) : (
+        <>
+          <Box display={"flex"} justifyContent={"space-between"} p={1}>
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              borderBottom={
+                props.sortList.price !== 0 ? "1px solid gray" : "0px solid gray"
+              }
             >
-              No ticket matches your request. Check other tickets that may suit
-              your plan.
+              <Button
+                onClick={() => {
+                  handleSort(
+                    "price",
+                    setSortedTickets,
+                    props.setSortList,
+                    props.sortList
+                  );
+                }}
+                color="info"
+              >
+                Price
+              </Button>
+              {props.sortList.price === 1 ? (
+                <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
+              ) : (
+                <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
+              )}
+            </Box>
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              borderBottom={
+                props.sortList.departure_time !== 0
+                  ? "1px solid gray"
+                  : "0px solid gray"
+              }
+            >
+              <Button
+                onClick={() => {
+                  handleSort(
+                    "departure_time",
+                    setSortedTickets,
+                    props.setSortList,
+                    props.sortList
+                  );
+                }}
+              >
+                Departure
+              </Button>
+              {props.sortList.departure_time === 1 ? (
+                <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
+              ) : (
+                <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
+              )}
+            </Box>
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              borderBottom={
+                props.sortList.return_time !== 0
+                  ? "1px solid gray"
+                  : "0px solid gray"
+              }
+            >
+              <Button
+                onClick={() => {
+                  handleSort(
+                    "return_time",
+                    setSortedTickets,
+                    props.setSortList,
+                    props.sortList
+                  );
+                }}
+              >
+                Return
+              </Button>
+              {props.sortList.return_time === 1 ? (
+                <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
+              ) : (
+                <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
+              )}
+            </Box>
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              borderBottom={
+                props.sortList.flight_length !== 0
+                  ? "1px solid gray"
+                  : "0px solid gray"
+              }
+            >
+              <Button
+                onClick={() => {
+                  handleSort(
+                    "flight_length",
+                    setSortedTickets,
+                    props.setSortList,
+                    props.sortList
+                  );
+                }}
+              >
+                Duration
+              </Button>
+              {props.sortList.flight_length === 1 ? (
+                <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
+              ) : (
+                <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
+              )}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              overflow: "auto",
+              height: 700,
+              padding: 5,
+            }}
+          >
+            <Typography variant="h3" ref={props.scrollRef} textAlign={"center"}>
+              {props?.isFiltered ? "Searched Tickets" : "All Tickets"}
             </Typography>
-            <Button
-              color="error"
-              sx={{ ml: "34%", mt: 3 }}
-              variant="outlined"
-              onClick={() => {
-                props.setSearchedTickets(null);
-              }}
-            >
-              All Tickets
-            </Button>
-          </>
-        ) : (
-          ticketData?.map((ticket) => {
-            return <TicketCard ticket={ticket} key={ticket.id} />;
-          })
-        )}
-      </Box>
+
+            {props.ticketsList && props.ticketsList?.length === 0 ? (
+              <>
+                <Typography
+                  textAlign={"center"}
+                  variant="h5"
+                  color={"error"}
+                  mt={10}
+                >
+                  No ticket matches your request. Check other tickets that may
+                  suit your plan.
+                </Typography>
+                <Button
+                  color="error"
+                  sx={{ ml: "34%", mt: 3 }}
+                  variant="outlined"
+                  onClick={() => {
+                    props.setSearchedTickets(null);
+                  }}
+                >
+                  All Tickets
+                </Button>
+              </>
+            ) : (
+              ticketData?.map((ticket) => {
+                return <TicketCard ticket={ticket} key={ticket.id} />;
+              })
+            )}
+          </Box>
+        </>
+      )}
     </Box>
   );
 };

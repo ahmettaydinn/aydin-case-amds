@@ -26,8 +26,6 @@ interface IRHFAutoCompleteProps<
     isOneWay: boolean;
     isRoundWay: boolean;
   }>;
-  setSelectedDepartAirport: React.Dispatch<React.SetStateAction<string>>;
-  setSelectedArrivalAirport: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const RHFAutoComplete = <
