@@ -34,10 +34,6 @@ In terms of seperation of concerns reusable components and folder structure is u
 <img  src="amadeus.gif" alt="screenshot">
 </p>
 
-## Links
-
-- [Live Website](https://aydin-amadeus-case.netlify.app/)
-
 ## Mock Api
 
 - I used [json-server](https://github.com/typicode/json-server) as mock-api. I request locally to the server.
