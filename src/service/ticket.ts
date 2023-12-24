@@ -7,8 +7,8 @@ const getTicket = async (
   departAirport: string,
   arrivalAirport: string,
   sortList: IinitialSort,
-  departDate: string | null,
-  returnDate: null | string
+  returnDate: null | string,
+  departDate: string
 ) => {
   let endpoint = "http://localhost:3000/tickets?";
 
@@ -17,7 +17,7 @@ const getTicket = async (
 
   // ? Add Sort queries
   Object.keys(sortList).forEach((sortKey) => {
-    sortKey as "price" | "departure_time" | "return_time" | "flight_length";
+    sortKey as "price" | "departureTime" | "return_time" | "flight_length";
     console.log("sortList[sortKey]", sortList[sortKey as keyof IinitialSort]);
     if (sortList[sortKey as keyof IinitialSort] !== 0) {
       toBeSorted = sortKey;
@@ -33,7 +33,7 @@ const getTicket = async (
 
   // ? Add Search queries
   if (departAirport) {
-    endpoint += `departure_airport=${departAirport || ""}`;
+    endpoint += `&departure_airport=${departAirport || ""}`;
   }
 
   if (arrivalAirport) {
@@ -41,9 +41,9 @@ const getTicket = async (
   }
 
   if (returnDate) {
-    endpoint += `departure_time_gte=${departDate}&departure_time_lte=${"2099-12-30"}`;
+    endpoint += `&departureTime_gte=${departDate}&departureTime_lte=${returnDate}`;
   } else {
-    endpoint += `departure_time_gte=${departDate}&departure_time_lte=${"2099-12-30"}`;
+    endpoint += `&departureTime_gte=${departDate}&departureTime_lte=${"2099-12-30"}`;
   }
   const data = await axios.get<ticketInfo[] | undefined>(endpoint);
 

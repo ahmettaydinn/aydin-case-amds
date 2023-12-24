@@ -75,7 +75,7 @@ export function FlightForm(props: IFlightFormProps) {
             name="returnDate"
             control={control}
             extraStyle={{ marginLeft: "10px" }}
-            label="Arrival Date"
+            label="Return Date"
             resetField={resetField}
             watch={watch}
           />

@@ -2,7 +2,7 @@ import { ticketInfo } from "../types/service";
 import { IinitialSort, initialSort } from "../types/ticket";
 
 export const handleSort = (
-  column: "price" | "departure_time" | "return_time" | "flight_length",
+  column: "price" | "departureTime" | "return_time" | "flight_length",
   setSortedTickets: React.Dispatch<
     React.SetStateAction<ticketInfo[] | null | undefined>
   >,
@@ -15,7 +15,7 @@ export const handleSort = (
   Object.keys(initialSort).forEach((sortItem) => {
     if (sortItem !== column) {
       spreadSortList[
-        sortItem as "price" | "departure_time" | "return_time" | "flight_length"
+        sortItem as "price" | "departureTime" | "return_time" | "flight_length"
       ] = 0;
     }
   });
@@ -35,7 +35,7 @@ export const handleSort = (
   // } else {
   //   const spreadTicketList = [...(ticketsList || [emptyTicketData])];
 
-  //   if (column === "departure_time" || column === "return_time") {
+  //   if (column === "departureTime" || column === "return_time") {
   //     spreadTicketList.sort((b, a) => {
   //       if (new Date(a[column]) < new Date(b[column])) {
   //         return -1;

@@ -5,7 +5,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Chip,
+  // Chip,
   Typography,
 } from "@mui/material";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
@@ -29,7 +29,7 @@ const TicketCard = (props: ITicketCardProps) => {
         <Typography gutterBottom variant="h5" component="div">
           {`${ticket.departure_city} (${ticket.departure_airport}) - ${ticket.arrival_city} (${ticket.arrival_airport})`}
         </Typography>
-        <Typography textAlign={"left"}>{ticket.departure_time}</Typography>
+        <Typography textAlign={"left"}>{ticket.departureTime}</Typography>
         <Typography variant="body2" color="text.secondary">
           Embark on your dream journey to
           <span style={{ fontWeight: "bold" }}> {ticket.arrival_city}</span> !
@@ -49,14 +49,14 @@ const TicketCard = (props: ITicketCardProps) => {
         <CardActions>
           <Button size="small">Buy</Button>
 
-          <Chip
+          {/* <Chip
             label={ticket.return ? "return ticket" : "departure ticket"}
             color="primary"
             variant="outlined"
-          />
+          /> */}
         </CardActions>
 
-        <Box>
+        <Box display={"flex"}>
           <Typography textAlign={"center"}>{ticket.flight_length}m</Typography>
           <HourglassEmptyIcon fontSize="small" sx={{ ml: 0.5 }} />
         </Box>

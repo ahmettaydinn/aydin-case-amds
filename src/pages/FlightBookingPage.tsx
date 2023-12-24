@@ -69,9 +69,9 @@ const FlightBookingPage = () => {
             setSelectedReturnDate(null);
           } else {
             setSelectedReturnDate(
-              `${new Date(data.returnDate as Date).getFullYear()}-${new Date(
-                data.returnDate as Date
-              ).getMonth()}-${new Date(data.returnDate as Date).getDate()}`
+              `${new Date(data.returnDate as Date).getFullYear()}-${
+                new Date(data.returnDate as Date).getMonth() + 1
+              }-${new Date(data.returnDate as Date).getDate()}`
             );
           }
         }}

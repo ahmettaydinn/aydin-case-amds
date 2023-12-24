@@ -13,7 +13,7 @@ export const searchTickets = (
       ticket.departure_airport === data.arrivalAirport &&
       ticket.arrival_airport === data.departureAirPort &&
       new Date(data.departureDate as Date).getTime() <=
-        new Date(ticket.departure_time).getTime();
+        new Date(ticket.departureTime).getTime();
 
     return departureCondition;
   });
@@ -23,7 +23,7 @@ export const searchTickets = (
       ticket.departure_airport === data.departureAirPort &&
       ticket.arrival_airport === data.arrivalAirport &&
       new Date(data.returnDate as Date).getTime() <=
-        new Date(ticket.departure_time).getTime();
+        new Date(ticket.departureTime).getTime();
 
     return returnCondition;
   });

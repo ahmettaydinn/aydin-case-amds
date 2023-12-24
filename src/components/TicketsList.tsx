@@ -90,7 +90,7 @@ const TicketsList = (props: ITicketsListProps) => {
               display={"flex"}
               justifyContent={"center"}
               borderBottom={
-                props.sortList.departure_time !== 0
+                props.sortList.departureTime !== 0
                   ? "1px solid gray"
                   : "0px solid gray"
               }
@@ -98,7 +98,7 @@ const TicketsList = (props: ITicketsListProps) => {
               <Button
                 onClick={() => {
                   handleSort(
-                    "departure_time",
+                    "departureTime",
                     setSortedTickets,
                     props.setSortList,
                     props.sortList
@@ -107,7 +107,7 @@ const TicketsList = (props: ITicketsListProps) => {
               >
                 Departure
               </Button>
-              {props.sortList.departure_time === 1 ? (
+              {props.sortList.departureTime === 1 ? (
                 <ArrowDropUpIcon sx={{ mt: 0.5 }} color="info" />
               ) : (
                 <ArrowDropDownIcon sx={{ mt: 0.5 }} color="info" />
@@ -176,7 +176,7 @@ const TicketsList = (props: ITicketsListProps) => {
             }}
           >
             <Typography variant="h3" ref={props.scrollRef} textAlign={"center"}>
-              {props?.isFiltered ? "Searched Tickets" : "All Tickets"}
+              {"Tickets"}
             </Typography>
 
             {props.ticketsList && props.ticketsList?.length === 0 ? (

@@ -30,7 +30,7 @@ export interface ticketInfo {
   arrival_city: string;
   departure_airport: string;
   arrival_airport: string;
-  departure_time: string;
+  departureTime: string;
   return_time: string;
   flight_length: number;
   price: number;
@@ -44,7 +44,7 @@ export const emptyTicketData: ticketInfo = {
   arrival_city: "",
   departure_airport: "",
   arrival_airport: "",
-  departure_time: "",
+  departureTime: "",
   return_time: "",
   flight_length: 0,
   price: 0,

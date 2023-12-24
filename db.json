@@ -39395,7 +39395,7 @@
         "arrival_city":"İzmir",
         "departure_airport":"IST",
         "arrival_airport":"ADB",
-        "departure_time":"2023-12-26",
+        "departureTime":"2023-12-26",
         "flight_length":70,
         "price":200,
         "arrival_image":"https://media.istockphoto.com/id/485947800/tr/foto%C4%9Fraf/clock-tower-izmir.jpg?s=612x612&w=0&k=20&c=CqaqzJpDMSkoNrghyCuXYKvtPSiTMPuMVFXGXhFP4oI="
@@ -39407,7 +39407,7 @@
       "arrival_city":"İstanbul",
       "departure_airport":"ADB",
       "arrival_airport":"IST",
-      "departure_time":"2023-12-30",
+      "departureTime":"2023-12-30",
       "flight_length":75,
       "price":220,
       "arrival_image":"https://i.pinimg.com/736x/cd/26/c4/cd26c48ee97b83901ae5d2f5e1ff4e68.jpg"
@@ -39418,7 +39418,7 @@
       "arrival_city":"Toronto",
       "departure_airport":"AMS",
       "arrival_airport":"YYZ",
-      "departure_time":"2024-09-9",
+      "departureTime":"2024-09-9",
       "flight_length":44,
       "price":300,
       "arrival_image":"https://cdn.pixabay.com/photo/2016/04/01/00/08/toronto-1298016_1280.jpg"
@@ -39429,7 +39429,7 @@
     "arrival_city":"Amsterdam",
     "departure_airport":"YYZ",
     "arrival_airport":"AMS",
-    "departure_time":"2024-09-20",
+    "departureTime":"2024-09-20",
     "flight_length":50,
     "price":314,
     "arrival_image":"https://www.clinkhostels.com/wp-content/themes/yootheme/cache/7f/amsterdam-cheap-time-7fb598bf.jpeg"
@@ -39440,7 +39440,7 @@
     "arrival_city":"İstanbul",
     "departure_airport":"ADB",
     "arrival_airport":"IST",
-    "departure_time":"2024-01-2",
+    "departureTime":"2024-01-2",
     "flight_length":20,
     "price":150,
     "arrival_image":"https://st.depositphotos.com/1915353/4509/i/450/depositphotos_45095187-stock-photo-blue-mosque-in-Istanbul-sunset.jpg"
@@ -39451,7 +39451,7 @@
     "arrival_city":"Cebu",
     "departure_airport":"KGS",
     "arrival_airport":"CEB",
-    "departure_time":"2024-11-19",
+    "departureTime":"2024-11-19",
     "flight_length":100,
     "price":450,
     "arrival_image":"https://media.istockphoto.com/id/662122836/tr/foto%C4%9Fraf/ada.jpg?s=612x612&w=0&k=20&c=ltYoEdRLMafRcpxv2iYuo78nAmIkrEScDo6vXvsCw5s="
@@ -39462,7 +39462,7 @@
   "arrival_city":"Kos",
   "departure_airport":"CEB",
   "arrival_airport":"KGS",
-  "departure_time":"2024-11-29",
+  "departureTime":"2024-11-29",
   "flight_length":120,
   "price":829,
   "arrival_image":"https://static.independent.co.uk/s3fs-public/thumbnails/image/2021/06/02/20/istock-833264986.jpg"
@@ -39473,7 +39473,7 @@
   "arrival_city":"New York",
   "departure_airport":"LHR",
   "arrival_airport":"JFK",
-  "departure_time":"2024-03-2",
+  "departureTime":"2024-03-2",
   "return_time":"2024-03-15",
   "flight_length":40,
   "price":350,
@@ -39485,7 +39485,7 @@
   "arrival_city":"London",
   "departure_airport":"JFK",
   "arrival_airport":"LHR",
-  "departure_time":"2024-03-15",
+  "departureTime":"2024-03-15",
   "flight_length":40,
   "price":355,
   "arrival_image":"https://a.cdn-hotels.com/gdcs/production153/d1371/e6c1f55e-51ac-41d5-8c63-2d0c63faf59e.jpg"
@@ -39496,7 +39496,7 @@
   "arrival_city":"Beijing",
   "departure_airport":"MDW",
   "arrival_airport":"PEK",
-  "departure_time":"2024-04-2",
+  "departureTime":"2024-04-2",
   "flight_length":60,
   "price":150,
   "arrival_image":"https://media.istockphoto.com/id/482334184/tr/foto%C4%9Fraf/night-on-beijing-central-business-district-buildings-skyline-china-cityscape.jpg?s=612x612&w=0&k=20&c=QpX8ytuXrH0r67q3qJOqNZlnIEsu3KYjAe5OAYEHXiQ="
@@ -39507,7 +39507,7 @@
   "arrival_city":"Chicago",
   "departure_airport":"PEK",
   "arrival_airport":"MDW",
-  "departure_time":"2024-04-15",
+  "departureTime":"2024-04-15",
   "flight_length":60,
   "price":250,
   "arrival_image":"https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?cs=srgb&dl=pexels-chait-goli-1823681.jpg&fm=jpg"
@@ -39518,7 +39518,7 @@
   "arrival_city":"Delhi",
   "departure_airport":"RIG",
   "arrival_airport":"DEL",
-  "departure_time":"2024-06-28",
+  "departureTime":"2024-06-28",
   "flight_length":10,
   "price":400,
   "arrival_image":"https://deih43ym53wif.cloudfront.net/Rajpath-delhi-shutterstock_1195751923.jpg_7647e1aad2.jpg"
@@ -39529,7 +39529,7 @@
   "arrival_city":"Rio Grande",
   "departure_airport":"DEL",
   "arrival_airport":"RIG",
-  "departure_time":"2024-06-7",
+  "departureTime":"2024-06-7",
   "flight_length":10,
   "price":400,
   "arrival_image":"https://www.altinrota.org/assets/images/uploads/articles/global/2022-05-19-113104-resim1.png"
@@ -39540,7 +39540,7 @@
   "arrival_city":"Khabarovsk",
   "departure_airport":"NYO",
   "arrival_airport":"KHV",
-  "departure_time":"2024-08-1",
+  "departureTime":"2024-08-1",
   "flight_length":80,
   "price":900,
   "arrival_image":"https://media.istockphoto.com/id/1440011471/tr/foto%C4%9Fraf/ancient-dormition-cathedral-of-khabarovsk-against-the-blue-sky-in-russia.jpg?s=612x612&w=0&k=20&c=roWAjtAvSud5TZC5SvqKybm7Fk4NqAmUXv-DX8Oxrtk="
@@ -39551,7 +39551,7 @@
   "arrival_city":"Stockholm",
   "departure_airport":"KHV",
   "arrival_airport":"NYO",
-  "departure_time":"2024-08-25",
+  "departureTime":"2024-08-25",
   "flight_length":85,
   "price":490,
   "arrival_image":"https://www.visitstockholm.com/media/images/Vinter_Gamla_stan.width-768.jpg"
@@ -39562,7 +39562,7 @@
   "arrival_city":"San Jose Del Cabo",
   "departure_airport":"LIL",
   "arrival_airport":"SJD",
-  "departure_time":"2024-07-29",
+  "departureTime":"2024-07-29",
   "flight_length":90,
   "price":500,
   "arrival_image":"https://media.istockphoto.com/id/1205168152/tr/foto%C4%9Fraf/san-jose-del-cabo.jpg?s=612x612&w=0&k=20&c=21Hom0GPDBhDBry-ZicrxXm9fLMfMu25ODj-APDOC5U="
@@ -39573,7 +39573,7 @@
   "arrival_city":"Lille - Lesquin",
   "departure_airport":"SJD",
   "arrival_airport":"LIL",
-  "departure_time":"2024-10-3",
+  "departureTime":"2024-10-3",
   "flight_length":91,
   "price":400,
   "arrival_image":"https://media.istockphoto.com/id/1205168152/tr/foto%C4%9Fraf/san-jose-del-cabo.jpg?s=612x612&w=0&k=20&c=21Hom0GPDBhDBry-ZicrxXm9fLMfMu25ODj-APDOC5U="
@@ -39584,7 +39584,7 @@
 "arrival_city":"Adana",
 "departure_airport":"ESB",
 "arrival_airport":"ADA",
-"departure_time":"2024-02-2",
+"departureTime":"2024-02-2",
 "flight_length":30,
 "price":100,
 "arrival_image":"https://media.istockphoto.com/id/1163813872/tr/foto%C4%9Fraf/atat%C3%BCrk-mozolesi-an%C4%B1tkabir.jpg?s=612x612&w=0&k=20&c=-4ykrzxh0C1ftwmTmDygOQ3LmueTpnRTNY304JvSG7M="
@@ -39595,7 +39595,7 @@
 "arrival_city":"Ankara",
 "departure_airport":"ADA",
 "arrival_airport":"ESB",
-"departure_time":"2024-02-15",
+"departureTime":"2024-02-15",
 "flight_length":30,
 "price":100,
 "arrival_image":"https://uo.asbu.edu.tr/sites/idari_birimler/uo.asbu.edu.tr/files/inline-images/Ankara.jpg"
