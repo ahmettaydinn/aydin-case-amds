@@ -2,7 +2,8 @@
 
 As a JS library project ui runs on react and react-dom. Project is coded with typescript. Various
 3rd party packages installed for better user experience and professional UI. These packages are high-level
-but tiresome to configure. Necessary research and previous took part in this process.
+but tiresome to configure. Necessary research and previous took part in this process. As a basic CI github workflow
+is added to run in github actions.
 
 ## Table of contents
 
@@ -69,8 +70,10 @@ Throughout the project Typescript is preferred over Javascript due to some reaso
 ## Project Skeleton
 
 ```
-
+|----.github/workflows
 |----components
+  |----form
+  |----layout
 |----service
 |----pages
 |----types
