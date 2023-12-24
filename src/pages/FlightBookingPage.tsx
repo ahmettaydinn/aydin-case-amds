@@ -71,9 +71,9 @@ const FlightBookingPage = () => {
           setSelectedArrivalAirport(data.arrivalAirport);
           setSelectedDepartAirport(data.departureAirPort);
           setSelectedDepartDate(
-            `${new Date(data.departureDate as Date).getFullYear()}-${new Date(
-              data.departureDate as Date
-            ).getMonth()}-${new Date(data.departureDate as Date).getDate()}`
+            `${new Date(data.departureDate as Date).getFullYear()}-${
+              new Date(data.departureDate as Date).getMonth() + 1
+            }-${new Date(data.departureDate as Date).getDate()}`
           );
 
           if (data.isOneWay === true) {

@@ -21,10 +21,11 @@ In terms of seperation of concerns reusable components and folder structure is u
 
 ## How to run the project
 
-! do not forget to run the db before runing application
-
+- do not forget to run the db before runing application!
 - run "yarn dev" to start the local server. Project runs on http://localhost:5173/
 - run "json-server --watch db.json --delay 250". Mock Database runs on http://localhost:3000/ (delay is necessary to see the loading)
+- There are not available tickets to satisfy all airports. I created 19 tickets to be searched. Please check them in inital render in
+  which displays all tickets!
 
 ## Screenshot
 
@@ -34,7 +35,7 @@ In terms of seperation of concerns reusable components and folder structure is u
 
 ## Links
 
-- [Live Website](https://splendorous-nasturtium-b2da46.netlify.app/)
+- [Live Website](https://aydin-amadeus-case.netlify.app/)
 
 ## Mock Api
 
@@ -82,11 +83,15 @@ Throughout the project Typescript is preferred over Javascript due to some reaso
 
 All form fields are validated. In case of wrong input or empty required fields user is warned and forwarded with toast messages. Autocomplete and Date picker is used for forms. Chekboxes are structurd as align.
 
-```
+Validations Instances:
+
+1. Return Date can not be before than departure date
+2. Any date can not be before than today
+3. All required fields must be filled
+4. Two checkboxes cannot be selected at same time
 
 ## Author
 
 - Author - [Ahmet]
 <p><i>All codes belong to me</i></p>
 <center> &#8987; Happy Coding  &#9997; </center>
-```

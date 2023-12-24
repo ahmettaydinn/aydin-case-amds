@@ -42,7 +42,7 @@ const getTicket = async (
 
   if (returnDate) {
     endpoint += `&departureTime_gte=${departDate}&departureTime_lte=${returnDate}`;
-  } else {
+  } else if (departDate) {
     endpoint += `&departureTime_gte=${departDate}&departureTime_lte=${"2099-12-30"}`;
   }
   const data = await axios.get<ticketInfo[] | undefined>(endpoint);
