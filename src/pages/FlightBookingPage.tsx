@@ -2,12 +2,13 @@ import { Box, Typography } from "@mui/material";
 import { FlightForm } from "../components/form/FlightForm";
 import useGetAirports from "../service/airports";
 import TicketsList from "../components/TicketsList";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useGetTicket from "../service/ticket";
 import Image from "/public/bgg.jpg";
 import { ticketInfo } from "../types/service";
 import { handleScrollToTickets } from "../utils/scrollToElement";
 import { initialSort } from "../types/ticket";
+import { toast } from "react-toastify";
 
 const FlightBookingPage = () => {
   const [selectedDepartAirport, setSelectedDepartAirport] = useState("");
@@ -20,7 +21,11 @@ const FlightBookingPage = () => {
 
   // ! ---------------------------------------------------------------------------
 
-  const { data: airportsList, isFetching: airportsLoading } = useGetAirports();
+  const {
+    data: airportsList,
+    isFetching: airportsLoading,
+    isError,
+  } = useGetAirports();
   const { data: ticketsList, isFetching: ticketsLoading } = useGetTicket({
     departAirport: selectedDepartAirport,
     arrivalAirport: selectedArrivalAirport,
@@ -38,6 +43,12 @@ const FlightBookingPage = () => {
   const isLoading = airportsLoading || ticketsLoading;
 
   console.log("selectedReturnDate", selectedReturnDate);
+
+  useEffect(() => {
+    if (isError === true) {
+      toast("We encountered a problem");
+    }
+  }, [isError]);
 
   return (
     <Box
@@ -86,6 +97,7 @@ const FlightBookingPage = () => {
         sortList={sortList}
         setSortList={setSortList}
         isLoading={isLoading}
+        isError={isError}
       />
     </Box>
   );

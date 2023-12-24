@@ -1,7 +1,15 @@
 # PROJECT : Amadeus Case
 
+As a JS library project ui runs on react and react-dom. Project is coded with typescript. Various
+3rd party packages installed for better user experience and professional UI. These packages are high-level
+but tiresome to configure. Necessary research and previous took part in this process.
+
 ## Table of contents
 
+In terms of seperation of concerns reusable components and folder structure is used.
+'db.json' in the root of the project stands for database.
+
+- [How to run the project](#how-to-run-the-project)
 - [Screenshot](#screenshot)
 - [Mock API](#mock-api)
 - [Type Safety](#type-safety)
@@ -10,6 +18,13 @@
 - [Project Skeleton ](#project-skeleton)
 - [Validation Mechanism](#validation-mechanism)
 - [Author](#author)
+
+## How to run the project
+
+! do not forget to run the db before runing application
+
+- run "yarn dev" to start the local server. Project runs on http://localhost:5173/
+- run "json-server --watch db.json --delay 250". Mock Database runs on http://localhost:3000/ (delay is necessary to see the loading)
 
 ## Screenshot
 
@@ -39,10 +54,6 @@
 ## Type Safety
 
 Throughout the project Typescript is preferred over Javascript due to some reasons. These reasons are prevent errors beforehand and keep code more consistent and scalable. When needed advance typescript features such as generics are researched and use. The way is typescript used in this project is very dynamic and reusable. Another folder called types is created exactly for this reason.
-
-## Links
-
-- [Live Website](https://splendorous-nasturtium-b2da46.netlify.app/)
 
 ## Libraries-Tools
 

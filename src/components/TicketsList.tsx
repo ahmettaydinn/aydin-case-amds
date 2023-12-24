@@ -18,6 +18,7 @@ interface ITicketsListProps {
   sortList: IinitialSort;
   setSortList: React.Dispatch<React.SetStateAction<IinitialSort>>;
   isLoading: boolean;
+  isError: boolean;
 }
 
 const TicketsList = (props: ITicketsListProps) => {
@@ -179,7 +180,8 @@ const TicketsList = (props: ITicketsListProps) => {
               {"Tickets"}
             </Typography>
 
-            {props.ticketsList && props.ticketsList?.length === 0 ? (
+            {(props.ticketsList && props.ticketsList?.length === 0) ||
+            props.isError ? (
               <>
                 <Typography
                   textAlign={"center"}
