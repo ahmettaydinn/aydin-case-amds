@@ -65,8 +65,10 @@ const RHFAutoComplete = <
                 onChange(newValue ? newValue.iata_code : null);
               }}
               options={options}
-              sx={{ width: 400, marginBottom: 2 }}
-              getOptionLabel={(option) => `${option.name} - ${option.city}`}
+              sx={{ width: 410, marginBottom: 2 }}
+              getOptionLabel={(option) =>
+                `${option.name} - ${option.city} - ${option.iata_code}`
+              }
               getOptionKey={(option) => option.id}
               renderInput={(params) => (
                 <TextField {...params} label={label} inputRef={ref} />
